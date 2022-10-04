@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 Use App\Http\Controllers\LanguageController;
+Use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,8 @@ Route::get('/', function () {
 });
 // Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
+
+Route::get('/languageDemo', [HomeController::class, 'languageDemo'])->name('languageDemo');
 
 Auth::routes();
 
