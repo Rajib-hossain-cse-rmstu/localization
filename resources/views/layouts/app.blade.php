@@ -57,13 +57,20 @@
                         <div class="dropdown">
                             <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                {{ Config::get('languages')[App::getLocale()] }}
+                                {{-- {{ Config::get('languages')[App::getLocale()] }} --}}
+                                <span
+                                    class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span>
+                                {{ Config::get('languages')[App::getLocale()]['display'] }}
                             </button>
+
                             <ul class="dropdown-menu">
+
+
                                 @foreach (Config::get('languages') as $lang => $language)
                                 @if ($lang != App::getLocale())
-                                <li><a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"> {{$language}}</a>
-                                </li>
+                                <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"><span
+                                        class="flag-icon flag-icon-{{$language['flag-icon']}}"></span>
+                                    {{$language['display']}}</a>
                                 @endif
                                 @endforeach
                             </ul>
